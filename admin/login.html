@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Login — PsycheVidhya</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="login-wrap">
+    <form class="login-card" id="loginForm" novalidate>
+      <h1>PsycheVidhya Admin</h1>
+      <p class="sub">Sign in to view session requests and messages.</p>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+      </div>
+      <button class="btn" type="submit">Sign in</button>
+      <p class="status-msg" id="statusMsg" role="status"></p>
+    </form>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
