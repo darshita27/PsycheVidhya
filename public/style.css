@@ -132,7 +132,9 @@ button[disabled], input[disabled] { opacity: .6; cursor: not-allowed; }
 
 /* ============ Header / Nav ============ */
 header {
-  position: sticky; top: 0; z-index: 900;
+  /* Must outrank #chatbot (900): the mobile nav panel lives inside header and,
+     despite its own higher z-index, can't escape header's stacking context. */
+  position: sticky; top: 0; z-index: 1000;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
   transition: box-shadow var(--dur-med) var(--smooth), background var(--dur-med) var(--smooth);
@@ -177,16 +179,23 @@ header.is-scrolled {
   color: var(--ink); padding: .5rem .7rem; border-radius: var(--radius); cursor: pointer;
 }
 @media (max-width: 860px) {
-  .nav-toggle { display: inline-flex; align-items: center; gap: .4rem; }
+  .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    min-height: 44px; min-width: 44px; padding: .6rem 1rem;
+  }
   .nav-links {
     position: fixed; top: 0; right: -100%; height: 100vh; width: min(320px, 84vw);
     background: var(--paper); flex-direction: column; justify-content: center;
-    align-items: flex-start; gap: 1.4rem; padding: 2rem;
+    align-items: stretch; gap: .5rem; padding: 2rem;
     box-shadow: -12px 0 40px rgba(var(--shadow-rgb), .18);
     transition: right var(--dur-med) var(--smooth); z-index: 950;
   }
   .nav-links.mobile-open { right: 0; }
-  .nav-links a { font-size: 1.05rem; }
+  .nav-links a {
+    font-size: 1.05rem; display: flex; align-items: center;
+    min-height: 44px; padding: .6rem 0;
+  }
+  .nav-links a.nav-cta { justify-content: center; margin-top: .5rem; }
 }
 
 /* ============ Buttons ============ */
