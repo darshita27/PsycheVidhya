@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resources — Free Wellness Tools | PsycheVidhya</title>
+  <meta name="description" content="Free, private self-guided wellness tools: mood tracking, a guided breathing exercise, and a PHQ-9 mental health check-in. Plus crisis resources if you need help now." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://psychevidhya.com/resources.html" />
+  <meta name="api-base" content="" />
+
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        PsycheVidhya
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true">Menu</span>
+      </button>
+      <div id="menu" class="nav-links" role="menubar">
+        <a role="menuitem" href="index.html">Home</a>
+        <a role="menuitem" href="about.html">About</a>
+        <a role="menuitem" href="services.html">Services</a>
+        <a role="menuitem" href="resources.html">Resources</a>
+        <a role="menuitem" href="contact.html" class="nav-cta">Book a Session</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="wellness-title">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow">Resources</span>
+          <div class="eyebrow-rule"></div>
+          <h1 id="wellness-title">Free Wellness Tools</h1>
+          <p class="muted">Private, self-guided tools to check in with yourself between sessions. Entries are stored only on this device, in your browser.</p>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="tool-card" data-reveal>
+            <h3>Track Your Mood</h3>
+            <select id="moodSelect" aria-label="Select your current mood">
+              <option value="happy">😊 Happy</option>
+              <option value="neutral">😐 Neutral</option>
+              <option value="sad">😢 Sad</option>
+              <option value="anxious">😰 Anxious</option>
+            </select>
+            <button id="saveMoodBtn" class="btn btn-outline" type="button">Save Mood</button>
+            <p id="moodStatus" class="form-status" role="status"></p>
+          </div>
+
+          <div class="tool-card" data-reveal>
+            <h3>Relaxation Exercise</h3>
+            <p class="muted">A simple guided breathing pattern to help you settle.</p>
+            <button id="breathingStartBtn" class="btn btn-outline" type="button">Start Breathing</button>
+            <p id="breathingText" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="tool-card wide" data-reveal>
+          <h3>Mood Analytics</h3>
+          <p class="muted">A visual summary of the moods you've logged on this device.</p>
+          <canvas id="moodChart" role="img" aria-label="Bar chart of logged mood counts"></canvas>
+        </div>
+
+        <div class="tool-card wide" data-reveal>
+          <h3>Mental Health Check-In</h3>
+          <p class="muted">Based on the PHQ-9 screening questionnaire, reflecting how you've felt over the <strong>last two weeks</strong>. This is a self-awareness tool, not a diagnosis — only a licensed professional can diagnose a mental health condition.</p>
+          <form id="screenerForm" aria-label="Mental health check-in questionnaire"></form>
+          <button class="btn" type="submit" form="screenerForm">See my result</button>
+          <p id="result" aria-live="polite"></p>
+          <button id="shareScreenerBtn" class="btn btn-outline" type="button" hidden>Share these results with Vanupriya</button>
+        </div>
+
+        <div class="tool-card wide crisis-block" data-reveal aria-labelledby="crisis-title">
+          <h3 id="crisis-title">If you're in crisis right now</h3>
+          <p>If you are thinking about suicide or self-harm, or you are worried about your immediate safety, please don't wait for a reply from this website.</p>
+          <ul>
+            <li><strong>India — AASRA:</strong> <a href="tel:+919820466726">+91 98204 66726</a> (24/7)</li>
+            <li><strong>India — iCall (TISS):</strong> <a href="tel:+919152987821">+91 91529 87821</a></li>
+            <li><strong>Emergency services:</strong> <a href="tel:112">112</a></li>
+          </ul>
+          <p class="muted">These tools and this website are not a substitute for emergency care.</p>
+        </div>
+
+        <p class="muted privacy-note" data-reveal>
+          <strong>Privacy note:</strong> mood entries and check-in answers stay in your browser's local storage and are never sent anywhere unless you tap "Share these results with Vanupriya." Clearing your browser data will erase them.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <div id="chatbot" aria-label="Chat with the PsycheVidhya assistant">
+    <div id="chat-header">💬 Talk to us</div>
+    <div id="chat-body" aria-live="polite">
+      <div class="bot-msg">Hi, how are you feeling today?</div>
+    </div>
+    <form id="chat-input">
+      <label for="userInput" class="sr-only">Type your message</label>
+      <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off" />
+      <button id="chatSendBtn" type="submit">Send</button>
+    </form>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="footer-wrap">
+      <div class="footer-brand">PsycheVidhya</div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Book a Session</a>
+      </nav>
+      <div class="small">© <span id="year"></span> PsycheVidhya - Vanupriya Singh. Professional Psychology Services.</div>
+      <div class="small contact-info-line">
+        📧 <a href="mailto:vanupriyasingh28@gmail.com">vanupriyasingh28@gmail.com</a>
+      </div>
+      <div class="small contact-info-line">
+        📞 <a href="tel:+919829112811">9829112811</a>
+      </div>
+      <div class="small social-links-line">
+        <a href="https://instagram.com/psychevidhya" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="images/Instagram_icon.png.webp" alt="" class="social-icon" loading="lazy" decoding="async" />
+          <span>Instagram</span>
+        </a>
+      </div>
+      <div class="small social-links-line">
+        <a href="https://www.linkedin.com/in/vanupriya-naruka" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="images/linkedIn.png" alt="" class="social-icon" loading="lazy" decoding="async" />
+          <span>LinkedIn</span>
+        </a>
+      </div>
+      <div class="small">Empowering mental wellness through compassionate care and evidence-based therapy.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

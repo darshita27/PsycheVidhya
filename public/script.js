@@ -17,11 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-  const body = document.body;
   const navToggle = $(".nav-toggle");
   const menu = $("#menu");
   const progress = $(".scroll-progress");
-  const themeToggle = $(".theme-toggle");
+  const header = $("header");
   const yearEl = $("#year");
 
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -81,41 +80,22 @@ document.addEventListener("DOMContentLoaded", () => {
     revealEls.forEach((el) => el.classList.add("in-view"));
   }
 
-  // ---------- Active nav link ----------
-  const sections = [...document.querySelectorAll("main section[id]")];
-  const links = [...document.querySelectorAll(".nav-links a")];
+  // ---------- Active nav link (current page, not scroll position) ----------
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+  $$(".nav-links a").forEach((a) => {
+    const href = a.getAttribute("href");
+    if (!href || href.startsWith("#")) return;
+    const linkPage = href.split("/").pop();
+    a.classList.toggle("active", linkPage === currentPage || (currentPage === "" && linkPage === "index.html"));
+  });
 
-  const setActiveLink = () => {
-    let current = sections[0]?.id || "";
-    const fromTop = window.scrollY + 120;
-
-    sections.forEach((sec) => {
-      if (sec.offsetTop <= fromTop) current = sec.id;
-    });
-
-    links.forEach((a) => {
-      a.classList.toggle("active", a.getAttribute("href") === `#${current}`);
-    });
+  // ---------- Header shadow on scroll ----------
+  const setHeaderScrolled = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
   };
-
-  setActiveLink();
-  window.addEventListener("scroll", throttle(setActiveLink, 100), { passive: true });
-
-  // ---------- Theme toggle ----------
-  const THEME_COUNT = 6;
-  let currentTheme = Number(localStorage.getItem("psychevidhya-theme") || 1);
-  if (!Number.isFinite(currentTheme) || currentTheme < 1 || currentTheme > THEME_COUNT) {
-    currentTheme = 1;
-  }
-  body.setAttribute("data-theme", `theme${currentTheme}`);
-
-  const changeTheme = () => {
-    currentTheme = currentTheme >= THEME_COUNT ? 1 : currentTheme + 1;
-    body.setAttribute("data-theme", `theme${currentTheme}`);
-    localStorage.setItem("psychevidhya-theme", String(currentTheme));
-  };
-
-  themeToggle?.addEventListener("click", changeTheme);
+  setHeaderScrolled();
+  window.addEventListener("scroll", throttle(setHeaderScrolled, 100), { passive: true });
 
   // ---------- Chatbot ----------
   const chatInput = $("#userInput");

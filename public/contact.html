@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a Session — PsycheVidhya</title>
+  <meta name="description" content="Ready to take the first step towards better mental health? Share a few details and Vanupriya Singh will personally confirm your session by email." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://psychevidhya.com/contact.html" />
+  <meta name="api-base" content="" />
+
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        PsycheVidhya
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true">Menu</span>
+      </button>
+      <div id="menu" class="nav-links" role="menubar">
+        <a role="menuitem" href="index.html">Home</a>
+        <a role="menuitem" href="about.html">About</a>
+        <a role="menuitem" href="services.html">Services</a>
+        <a role="menuitem" href="resources.html">Resources</a>
+        <a role="menuitem" href="contact.html" class="nav-cta">Book a Session</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="contact-header-icon">
+            <img src="images/contact.png" alt="" loading="lazy" decoding="async" />
+          </div>
+          <span class="eyebrow">Get in Touch</span>
+          <div class="eyebrow-rule"></div>
+          <h1 id="contact-title">Book a Session</h1>
+          <p class="muted">Ready to take the first step towards better mental health? Share a few details and Vanupriya will personally confirm your session by email.</p>
+        </div>
+
+        <form class="contact-form" id="bookingForm" novalidate data-reveal>
+          <div class="field">
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" minlength="2" maxlength="120" required />
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="your.email@example.com" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Optional" maxlength="30" />
+          </div>
+          <div class="field">
+            <label for="service">Which service are you interested in?</label>
+            <select id="service" name="service">
+              <option value="Not sure yet">Not sure yet</option>
+              <option value="Cognitive Behavioral Therapy">Cognitive Behavioral Therapy</option>
+              <option value="Psychological Testing & Assessment">Psychological Testing &amp; Assessment</option>
+              <option value="Psychotherapy & Counselling">Psychotherapy &amp; Counselling</option>
+            </select>
+          </div>
+          <div class="grid cols-2">
+            <div class="field">
+              <label for="preferredDate">Preferred date</label>
+              <input id="preferredDate" name="preferredDate" type="date" />
+            </div>
+            <div class="field">
+              <label for="preferredTime">Preferred time</label>
+              <input id="preferredTime" name="preferredTime" type="time" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" maxlength="2000" placeholder="Tell me about your concerns or what type of support you're looking for..."></textarea>
+          </div>
+          <button class="btn" type="submit">Request a Session</button>
+          <p id="bookingStatus" class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="chatbot" aria-label="Chat with the PsycheVidhya assistant">
+    <div id="chat-header">💬 Talk to us</div>
+    <div id="chat-body" aria-live="polite">
+      <div class="bot-msg">Hi, how are you feeling today?</div>
+    </div>
+    <form id="chat-input">
+      <label for="userInput" class="sr-only">Type your message</label>
+      <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off" />
+      <button id="chatSendBtn" type="submit">Send</button>
+    </form>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="footer-wrap">
+      <div class="footer-brand">PsycheVidhya</div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Book a Session</a>
+      </nav>
+      <div class="small">© <span id="year"></span> PsycheVidhya - Vanupriya Singh. Professional Psychology Services.</div>
+      <div class="small contact-info-line">
+        📧 <a href="mailto:vanupriyasingh28@gmail.com">vanupriyasingh28@gmail.com</a>
+      </div>
+      <div class="small contact-info-line">
+        📞 <a href="tel:+919829112811">9829112811</a>
+      </div>
+      <div class="small social-links-line">
+        <a href="https://instagram.com/psychevidhya" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="images/Instagram_icon.png.webp" alt="" class="social-icon" loading="lazy" decoding="async" />
+          <span>Instagram</span>
+        </a>
+      </div>
+      <div class="small social-links-line">
+        <a href="https://www.linkedin.com/in/vanupriya-naruka" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="images/linkedIn.png" alt="" class="social-icon" loading="lazy" decoding="async" />
+          <span>LinkedIn</span>
+        </a>
+      </div>
+      <div class="small">Empowering mental wellness through compassionate care and evidence-based therapy.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
