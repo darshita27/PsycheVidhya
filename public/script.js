@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Empty (same-origin) unless overridden by <meta name="api-base"> — see index.html.
+  const API_BASE = document.querySelector('meta[name="api-base"]')?.content?.replace(/\/$/, "") || "";
+  const apiUrl = (path) => API_BASE + path;
+
   const throttle = (fn, wait = 100) => {
     let last = 0;
     return (...args) => {
@@ -165,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const typingEl = appendMessage("bot-msg typing", "Typing…");
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(apiUrl("/api/chat"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
@@ -342,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
     shareScreenerBtn.disabled = true;
     shareScreenerBtn.textContent = "Sending…";
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(apiUrl("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -386,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch("/api/bookings", {
+      const res = await fetch(apiUrl("/api/bookings"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
