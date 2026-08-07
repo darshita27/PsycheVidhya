@@ -290,13 +290,16 @@ h1 {
 
 .icon-badge {
   width: 66px; height: 66px; border-radius: 50%; margin: 0 auto 1.1rem;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: center; flex: none;
 }
 .icon-badge img { width: 32px; height: 32px; opacity: .85; }
+.icon-badge svg { width: 30px; height: 30px; color: var(--ink-strong); opacity: .82; }
 .icon-badge.tint-mint { background: var(--tint-mint); }
 .icon-badge.tint-blush { background: var(--tint-blush); }
 .icon-badge.tint-sky { background: var(--tint-sky); }
 .icon-badge.tint-sand { background: var(--tint-sand); }
+.icon-badge.sm { width: 52px; height: 52px; margin-bottom: .9rem; }
+.icon-badge.sm svg { width: 24px; height: 24px; }
 
 /* Conditions grid ("We Help With") */
 .work {
@@ -306,10 +309,6 @@ h1 {
 }
 .work:hover { border-color: var(--line-strong); transform: translateY(-3px); }
 .work-thumb { margin-bottom: .9rem; }
-.work-image {
-  width: 46px; height: 46px; margin: 0 auto; opacity: .85; border-radius: 50%;
-  object-fit: cover;
-}
 .work h3 { font-size: 1.05rem; margin-bottom: .5rem; }
 .work p.muted { font-size: .92rem; line-height: 1.55; }
 
