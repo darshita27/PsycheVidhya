@@ -97,10 +97,33 @@ document.addEventListener("DOMContentLoaded", () => {
   setHeaderScrolled();
   window.addEventListener("scroll", throttle(setHeaderScrolled, 100), { passive: true });
 
-  // ---------- Chatbot ----------
+  // ---------- Chatbot open/close ----------
+  const chatLauncher = $("#chatLauncher");
+  const chatPanel = $("#chatPanel");
+  const chatCloseBtn = $("#chatCloseBtn");
   const chatInput = $("#userInput");
   const chatBody = $("#chat-body");
   const chatSendBtn = $("#chatSendBtn");
+
+  const openChat = () => {
+    if (!chatPanel || !chatLauncher) return;
+    chatPanel.hidden = false;
+    chatLauncher.hidden = true;
+    chatLauncher.setAttribute("aria-expanded", "true");
+    chatInput?.focus();
+  };
+  const closeChat = () => {
+    if (!chatPanel || !chatLauncher) return;
+    chatPanel.hidden = true;
+    chatLauncher.hidden = false;
+    chatLauncher.setAttribute("aria-expanded", "false");
+    chatLauncher.focus();
+  };
+  chatLauncher?.addEventListener("click", openChat);
+  chatCloseBtn?.addEventListener("click", closeChat);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && chatPanel && !chatPanel.hidden) closeChat();
+  });
 
   const getEmotion = (message = "") => {
     const text = message.toLowerCase();

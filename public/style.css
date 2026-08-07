@@ -400,15 +400,38 @@ textarea { min-height: 130px; resize: vertical; }
 .contact-header-icon img { width: 30px; height: 30px; opacity: .8; }
 
 /* ============ Chat assistant ============ */
-#chatbot {
-  position: fixed; bottom: 20px; left: 20px; width: min(310px, calc(100vw - 40px));
+#chatbot { position: fixed; bottom: 20px; left: 20px; z-index: 900; }
+
+#chatLauncher {
+  width: 58px; height: 58px; border-radius: 50%; border: none; cursor: pointer;
+  background: var(--ink-strong); color: #fff; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 28px rgba(var(--shadow-rgb), .28);
+  transition: transform var(--dur-fast) var(--smooth), background var(--dur-fast) var(--smooth);
+}
+/* The [hidden] attribute alone loses to the display:flex rule above (ID beats
+   attribute-selector specificity) — without this, toggling `hidden` via JS
+   would set the attribute but not actually hide the button. */
+#chatLauncher[hidden], #chatPanel[hidden] { display: none; }
+#chatLauncher svg { width: 26px; height: 26px; }
+#chatLauncher:hover { transform: translateY(-3px); background: var(--ink); }
+
+#chatPanel {
+  width: min(310px, calc(100vw - 40px));
   background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius-lg);
-  box-shadow: 0 16px 40px rgba(var(--shadow-rgb), .18); overflow: hidden; z-index: 900;
+  box-shadow: 0 16px 40px rgba(var(--shadow-rgb), .18); overflow: hidden;
 }
 #chat-header {
-  background: var(--ink-strong); color: #fff; padding: .8rem 1rem;
+  background: var(--ink-strong); color: #fff; padding: .8rem .6rem .8rem 1rem;
   font-family: var(--font-serif); font-weight: 600; font-size: 1.02rem;
+  display: flex; align-items: center; justify-content: space-between;
 }
+#chatCloseBtn {
+  background: transparent; border: none; color: #fff; opacity: .8; cursor: pointer;
+  padding: .4rem; display: flex; border-radius: 50%;
+  transition: opacity var(--dur-fast) var(--smooth), background var(--dur-fast) var(--smooth);
+}
+#chatCloseBtn svg { width: 18px; height: 18px; }
+#chatCloseBtn:hover { opacity: 1; background: rgba(255, 255, 255, .12); }
 #chat-body { height: 260px; overflow-y: auto; padding: .7rem; }
 .bot-msg {
   background: var(--paper-alt); color: var(--body-text); padding: .55rem .75rem;
