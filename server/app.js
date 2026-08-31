@@ -71,7 +71,7 @@ app.use(errorHandler);
 async function start() {
   await connectDB();
   app.listen(PORT, () => {
-    console.log(`Manova mental wellness server running on http://localhost:${PORT}`);
+    console.log(`Manova Mental Wellness server running on http://localhost:${PORT}`);
   });
 }
 

@@ -27,7 +27,7 @@ function getTransporter() {
 }
 
 async function sendEmail({ to, subject, html, text }) {
-  const from = process.env.EMAIL_FROM || "Manova mental wellness <no-reply@psychevidhya.local>";
+  const from = process.env.EMAIL_FROM || "Manova Mental Wellness <no-reply@psychevidhya.local>";
   const t = getTransporter();
 
   if (!t) {
@@ -46,16 +46,16 @@ async function sendEmail({ to, subject, html, text }) {
 
 function bookingClientEmail(booking) {
   return {
-    subject: "We received your session request — Manova mental wellness",
+    subject: "We received your session request — Manova Mental Wellness",
     text:
       `Hi ${booking.name},\n\n` +
-      `Thank you for reaching out to Manova mental wellness. We've received your request for ` +
+      `Thank you for reaching out to Manova Mental Wellness. We've received your request for ` +
       `"${booking.service}"${booking.preferredDate ? ` on ${booking.preferredDate}` : ""}` +
       `${booking.preferredTime ? ` at ${booking.preferredTime}` : ""}.\n\n` +
       `Vanupriya will personally review your request and confirm your session shortly by email or phone.\n\n` +
       `If this is a mental health emergency, please contact your local emergency services or a crisis helpline ` +
       `immediately rather than waiting for a reply here.\n\n` +
-      `Warmly,\nManova mental wellness`,
+      `Warmly,\nManova Mental Wellness`,
   };
 }
 

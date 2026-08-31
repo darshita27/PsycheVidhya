@@ -1,7 +1,7 @@
 {
   "name": "psychevidhya",
   "version": "1.0.0",
-  "description": "Manova mental wellness — Vanupriya Singh's psychology practice website and booking backend.",
+  "description": "Manova Mental Wellness — Vanupriya Singh's psychology practice website and booking backend.",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
